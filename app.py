@@ -29,6 +29,8 @@ def index():
         session['words'] = fetch_words(1)
         session['current_word_index'] = 0
         session['level_score'] = 0
+        session['user_answers'] = []
+        session['scrambled_words'] = []
         return redirect(url_for('level'))
     return render_template('index.html')
 
@@ -40,6 +42,10 @@ def level():
     
     if request.method == 'POST':
         user_answer = request.form['answer'].strip().lower()
+        scrambled_word = scramble_word(words[current_word_index])
+        session['scrambled_words'].append(scrambled_word)
+        session['user_answers'].append(user_answer)
+        
         if user_answer == words[current_word_index].strip().lower():
             session['score'] += 1
             session['level_score'] += 1
@@ -59,6 +65,10 @@ def level():
 def level_complete():
     level = session.get('level')
     level_score = session.get('level_score')
+    words = session.get('words')
+    scrambled_words = session.get('scrambled_words')
+    user_answers = session.get('user_answers')
+    
     if request.method == 'POST':
         if 'next' in request.form:
             if level < 3:
@@ -66,12 +76,16 @@ def level_complete():
                 session['words'] = fetch_words(session['level'])
                 session['current_word_index'] = 0
                 session['level_score'] = 0
+                session['user_answers'] = []
+                session['scrambled_words'] = []
                 return redirect(url_for('level'))
             else:
                 return redirect(url_for('game_over'))
         elif 'quit' in request.form:
             return redirect(url_for('index'))
-    return render_template('level_complete.html', level=level, level_score=level_score)
+    
+    results = list(zip(scrambled_words, words, user_answers))
+    return render_template('level_complete.html', level=level, level_score=level_score, results=results)
 
 @app.route('/game_over')
 def game_over():

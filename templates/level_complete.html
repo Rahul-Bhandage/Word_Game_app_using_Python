@@ -4,6 +4,24 @@
 <div class="container">
     <h2>Level {{ level }} Complete!</h2>
     <p>Score for Level {{ level }}: {{ level_score }}/7</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Scrambled Word</th>
+                <th>Your Answer</th>
+                <th>Correct Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for scrambled, correct, user_answer in results %}
+                <tr>
+                    <td>{{ scrambled }}</td>
+                    <td class="{{ 'correct' if user_answer == correct else 'wrong' }}">{{ user_answer }}</td>
+                    <td>{{ correct }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <form method="POST">
         <button type="submit" name="next">Next Level</button>
         <button type="submit" name="quit">Quit</button>

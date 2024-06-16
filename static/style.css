@@ -64,6 +64,23 @@ button:hover {
     background-color: #005bb5;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #0073e6;
+    color: white;
+}
+
 .correct {
     color: green;
 }
