@@ -1,0 +1,34 @@
+<!-- <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Over</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container mt-5 content-wrapper">
+        <div class="card shadow-lg animated fadeIn">
+            <div class="card-body">
+                <h1 class="card-title text-center">
+                    Game Over, {{ username }}!
+                    <span class="greeting">Hello, {{ username }}!</span>
+                </h1>
+                <p class="card-text text-center">Total Score: {{ total_score }}/21</p>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 Word Scramble Game. All Rights Reserved.</p>
+    </footer>
+</body>
+</html> -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Game Over, {{ username }}!</h2>
+    <p>Total Score: {{ score }}/21</p>
+    <a href="{{ url_for('index') }}">Play Again</a>
+</div>
+{% endblock %}

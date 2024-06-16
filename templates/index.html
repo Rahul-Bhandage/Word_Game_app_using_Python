@@ -1,0 +1,40 @@
+<!-- <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Word Scramble Game</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card shadow-lg animated fadeIn">
+            <div class="card-body">
+                <h1 class="card-title text-center">Welcome to the Word Scramble Game!</h1>
+                <form method="post">
+                    <div class="form-group">
+                        <label for="username">Enter your username: </label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Start Game</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 Word Scramble Game. All Rights Reserved.</p>
+    </footer>
+</body>
+</html> -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Welcome to the Word Scramble Game!</h2>
+    <form method="POST">
+        <label for="username">Enter your username:</label>
+        <input type="text" id="username" name="username" required>
+        <button type="submit">Start Game</button>
+    </form>
+</div>
+{% endblock %}

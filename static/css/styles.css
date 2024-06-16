@@ -1,0 +1,76 @@
+/* static/css/styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+body {
+    background: url('https://source.unsplash.com/1600x900/?nature,water') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn-block {
+    padding: 10px;
+    font-size: 18px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.username-display {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.highlight-correct {
+    background-color: #28a745; /* Green */
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.highlight-incorrect {
+    background-color: #dc3545; /* Red */
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+}
