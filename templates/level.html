@@ -10,7 +10,9 @@
         <button type="submit">Submit</button>
     </form>
     {% if session.correct is not none %}
-        <p>{{ 'Correct!' if session.correct else 'Wrong!' }}</p>
+        <p class="{{ 'correct' if session.correct else 'wrong' }}">
+            {{ 'Correct!' if session.correct else 'Wrong!' }}
+        </p>
     {% endif %}
 </div>
 {% endblock %}

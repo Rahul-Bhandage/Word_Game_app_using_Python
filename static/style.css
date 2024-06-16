@@ -11,6 +11,19 @@ header {
     color: white;
     padding: 20px 0;
     text-align: center;
+    position: relative;
+}
+
+.header-left {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.header-right {
+    position: absolute;
+    right: 20px;
+    top: 20px;
 }
 
 .container {
@@ -44,10 +57,19 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 5px 0;
 }
 
 button:hover {
     background-color: #005bb5;
+}
+
+.correct {
+    color: green;
+}
+
+.wrong {
+    color: red;
 }
 
 footer {

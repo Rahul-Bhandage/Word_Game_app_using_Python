@@ -28,6 +28,7 @@ def index():
         session['level'] = 1
         session['words'] = fetch_words(1)
         session['current_word_index'] = 0
+        session['level_score'] = 0
         return redirect(url_for('level'))
     return render_template('index.html')
 
@@ -41,6 +42,7 @@ def level():
         user_answer = request.form['answer'].strip().lower()
         if user_answer == words[current_word_index].strip().lower():
             session['score'] += 1
+            session['level_score'] += 1
             session['correct'] = True
         else:
             session['correct'] = False
@@ -48,16 +50,28 @@ def level():
         current_word_index = session['current_word_index']
         
         if current_word_index >= len(words):
+            return redirect(url_for('level_complete'))
+    
+    scrambled_word = scramble_word(words[current_word_index])
+    return render_template('level.html', level=level, scrambled_word=scrambled_word)
+
+@app.route('/level_complete', methods=['GET', 'POST'])
+def level_complete():
+    level = session.get('level')
+    level_score = session.get('level_score')
+    if request.method == 'POST':
+        if 'next' in request.form:
             if level < 3:
                 session['level'] += 1
                 session['words'] = fetch_words(session['level'])
                 session['current_word_index'] = 0
+                session['level_score'] = 0
                 return redirect(url_for('level'))
             else:
                 return redirect(url_for('game_over'))
-    
-    scrambled_word = scramble_word(words[current_word_index])
-    return render_template('level.html', level=level, scrambled_word=scrambled_word)
+        elif 'quit' in request.form:
+            return redirect(url_for('index'))
+    return render_template('level_complete.html', level=level, level_score=level_score)
 
 @app.route('/game_over')
 def game_over():

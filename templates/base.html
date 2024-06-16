@@ -8,7 +8,17 @@
 </head>
 <body>
     <header>
+        <div class="header-left">
+            {% if session.username %}
+                <p>Welcome, {{ session.username }}!</p>
+            {% endif %}
+        </div>
         <h1>Word Scramble Game</h1>
+        <div class="header-right">
+            {% if session.score is not none %}
+                <p>Score: {{ session.score }}</p>
+            {% endif %}
+        </div>
     </header>
     <main>
         {% block content %}{% endblock %}

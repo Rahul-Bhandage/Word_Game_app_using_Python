@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Level {{ level }} Complete!</h2>
+    <p>Score for Level {{ level }}: {{ level_score }}/7</p>
+    <form method="POST">
+        <button type="submit" name="next">Next Level</button>
+        <button type="submit" name="quit">Quit</button>
+    </form>
+</div>
+{% endblock %}
